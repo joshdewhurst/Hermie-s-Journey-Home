@@ -1,0 +1,74 @@
+html,body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    padding-top: 1em;
+    text-align: center;
+    background-color: blue;
+    background-image: url('https://img.freepik.com/premium-vector/retro-beach-pixel-design_210544-33.jpg?w=2000');
+    background-size: cover;
+    background-repeat: space;
+  }
+  
+  h1, h2 {
+    font-family: 'Press Start 2P', monospace;
+    /* font-family: monospace; */
+    color: darkcyan;
+  }
+  
+  canvas {
+    background-image: url("https://thumbs.dreamstime.com/b/pixel-art-desert-background-seamless-sand-texture-backdrop-vector-illustration-223655056.jpg");
+    /* background-repeat: repeat; */
+    background-color: skyblue;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #game-screen {
+  max-width: 50em;
+  /* height: 70vh; */
+  background-color: skyblue;
+  margin: 0 auto;
+  padding: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: .25fr .5fr .25fr;
+  grid-template-columns: .25fr .5fr .25fr;
+  grid-template-areas: "top-left top-left top-right"
+                        "game game game"
+                        "btm-left btm-right btm-right";
+  }
+  
+  #top-left, #top-right, #btm-left, #btm-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: sandybrown;
+  }
+  
+  #top-left {
+    grid-area: top-left;
+  }
+  
+  #top-right {
+    grid-area: top-right;
+    /* background-color: #222; */
+    /* background-image: url('../img/funky-lines.png'); */
+  }
+  
+  main {
+    grid-area: game;
+  }
+  
+  
+  #btm-left {
+    grid-area: btm-left;
+    /* background-color: #222; */
+  }
+  
+  #btm-right {
+    grid-area: btm-right;
+    /* background-color: #222; */
+  }
