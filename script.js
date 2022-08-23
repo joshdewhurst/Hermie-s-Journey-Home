@@ -25,47 +25,54 @@ canvas.addEventListener("mouseup", function () {
     mouse.click = false;
 })
 
-const playerIcon = new Image()
-playerIcon.src="./images/Hermie.png"
-
-
 class GamePiece {
-    constructor(x, y, width, height, image) {
+    constructor(x, y, width, height, playerIcon) {
         this.x = x
         this.y = y
         this.width = width
         this.height = height
         this.alive = true
+        this.playerIcon = playerIcon
+
+        const gameImage = new Image();
+        gameImage.src = this.playerIcon
+        gameImage.onload = () => {
+            ctx.drawImage(gameImage, this.x, this.y, this.width, this.height)
+        }
     }
 
-    render () { 
-        debugger;
-    ctx.drawImage(playerIcon, 10, 10, 50, 50)
-    }
 }
 
+const hermie = new GamePiece(10, 10, 50, 50, './images/Hermie.png')
+const sandcastle = new GamePiece(200, 200, 60, 60, './images/sandcastle.jpeg')
 
-    // movePiece() {
-    //     const dx = this.x - mouse.x;
-    //     const dy = this.y - mouse.y;
-    //     if (thix.x != mouse.x) {
-    //         this.x -= dx/45;
-    //     }
-    //     if (this.y != mouse.y) {
-    //         this.y -= dy/45;
-    //     }
-    // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function movePiece () {
+//     const dx = hermieImage.x - mouse.x;
+//     const dy = hermieImage.y - mouse.y;
+//     if (hermieImage.x != mouse.x) {
+//         hermieImage.x -= dx/45;
+//     }
+//     if (hermieImage.y != mouse.y) {
+//         hermieImage.y -= dy/45;
+//     }
 // }
 
-const hermie = new GamePiece(10, 10, 50, 50)
-hermie.render()
+// document.addEventListener("mousedown", movePiece)
 
-// function runGame () {
-//     hermie.movePiece ();
-//     requestIdleCallback(runGame);
-//     gameFrame ++;
-// }
 
 
 console.log("I am working")
