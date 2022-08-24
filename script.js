@@ -38,9 +38,10 @@ class GamePiece {
         const gameImage = new Image();
         gameImage.src = this.playerIcon
         gameImage.onload = () => {
-            ctx.drawImage(gameImage, this.x, this.y, this.width, this.height)
+            ctx.drawImage(gameImage, this.x, this.y, this.width, this.height) }
+        }
 
-const RedrawImage = () => {
+RedrawImage = () => {
             const gameImage = new Image();
             gameImage.src = this.playerIcon
             gameImage.onload = () => {
@@ -48,8 +49,6 @@ const RedrawImage = () => {
         }
  }
         }
-    }
-}
 
 
 const hermie = new GamePiece(10, 10, 50, 50, './images/Hermie.png')
