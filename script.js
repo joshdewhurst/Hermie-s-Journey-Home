@@ -34,6 +34,7 @@ class GamePiece {
         this.alive = true
         this.playerIcon = playerIcon
 
+        // creating a function to produce a new image when given a src as a parameter
         const gameImage = new Image();
         gameImage.src = this.playerIcon
         gameImage.onload = () => {
@@ -41,38 +42,75 @@ class GamePiece {
         }
     }
 
+
 }
 
 const hermie = new GamePiece(10, 10, 50, 50, './images/Hermie.png')
 const sandcastle = new GamePiece(200, 200, 60, 60, './images/sandcastle.jpeg')
+// const crab = new GamePiece(400, 200, 60, 60, './images/Crab.png')
+const shell = new GamePiece(530, 130, 50, 50, './images/Shell.jpg')
 
 
+function movePlayer (e) {
+    console.log(e);
+    const speed = 10;
+    if (hermie.alive) {
+        switch (e.key) {
+            case('w'):
+            hermie.y -= speed
+            if (hermie.y < 0) {
+                hermie.y = 0
+            }
+            break
+            case('s'):
+            hermie.y += speed
+            if (hermie.y + hermie.height > canvas.height) {
+                hermie.y = canvas.height - hermie.height
+            }
+            break
+            case('a'):
+            hermie.x -= speed
+            if (hermie.x < 0) {
+            hermie.x = 0
+            }
+            break
+            case('d'):
+            hermie.x += speed
+            if (hermie.x + hermie.width > canvas.width) {
+                hermie.x = canvas.width - hermie.width
+            }
+        }
+        console.log(hermie.x, hermie.y)
+    }
+            }
 
+document.addEventListener('keydown', movePlayer)
 
+// having a running clock that shows how much time has passed
+function timer () {
+    let clock = document.getElementById("timer").innerText
+    gameFrame ++
+    clock = gameFrame
+    console.log(clock)
+}
 
+// setInterval(timer, 1000)
 
+// moving the crab piece
 
-
-
-
-
-
-
-
-
-// function movePiece () {
-//     const dx = hermieImage.x - mouse.x;
-//     const dy = hermieImage.y - mouse.y;
-//     if (hermieImage.x != mouse.x) {
-//         hermieImage.x -= dx/45;
-//     }
-//     if (hermieImage.y != mouse.y) {
-//         hermieImage.y -= dy/45;
-//     }
-// }
-
-// document.addEventListener("mousedown", movePiece)
-
+function moveCrab () {
+    if (gameFrame > 5) {
+        const crab = new GamePiece(400, 200, 60, 60, './images/Crab.png')
+    }
+}
 
 
 console.log("I am working")
+
+function runGame () {
+    timer()
+    moveCrab()
+    setInterval(timer, 1000)
+}
+
+runGame ()
