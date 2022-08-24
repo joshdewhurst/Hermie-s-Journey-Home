@@ -39,16 +39,23 @@ class GamePiece {
         gameImage.src = this.playerIcon
         gameImage.onload = () => {
             ctx.drawImage(gameImage, this.x, this.y, this.width, this.height)
+
+const RedrawImage = () => {
+            const gameImage = new Image();
+            gameImage.src = this.playerIcon
+            gameImage.onload = () => {
+            ctx.drawImage(gameImage, this.x, this.y, this.width, this.height)
+        }
+ }
         }
     }
-
-
 }
+
 
 const hermie = new GamePiece(10, 10, 50, 50, './images/Hermie.png')
 const sandcastle = new GamePiece(200, 200, 60, 60, './images/sandcastle.jpeg')
 // const crab = new GamePiece(400, 200, 60, 60, './images/Crab.png')
-const shell = new GamePiece(530, 130, 50, 50, './images/Shell.jpg')
+// const shell = new GamePiece(530, 130, 50, 50, './images/Shell.jpg')
 
 
 function movePlayer (e) {
@@ -81,6 +88,7 @@ function movePlayer (e) {
             }
         }
         console.log(hermie.x, hermie.y)
+        hermie.RedrawImage()
     }
             }
 
@@ -92,24 +100,24 @@ function timer () {
     gameFrame ++
     clock = gameFrame
     console.log(clock)
+
+    if (gameFrame % 10 ===0) {
+        let randomX = Math.floor(Math.random() * 550)
+        let randomY= Math.floor(Math.random() * 250)
+        const crab = new GamePiece(550, randomY, 60, 60, './images/Crab.png')
+    } if (gameFrame % 180 === 0) {
+        const shell = new GamePiece(530, 130, 50, 50, './images/Shell.jpg')
+    }
 }
 
 // setInterval(timer, 1000)
 
 // moving the crab piece
 
-function moveCrab () {
-    if (gameFrame > 5) {
-        const crab = new GamePiece(400, 200, 60, 60, './images/Crab.png')
-    }
-}
-
-
 console.log("I am working")
 
 function runGame () {
     timer()
-    moveCrab()
     setInterval(timer, 1000)
 }
 
