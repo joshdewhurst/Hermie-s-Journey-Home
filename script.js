@@ -87,6 +87,7 @@ function movePlayer (e) {
             }
         }
         console.log(hermie.x, hermie.y)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         hermie.RedrawImage()
     }
             }
@@ -101,13 +102,15 @@ function timer () {
     console.log(clock)
 
     if (gameFrame % 10 ===0) {
-        let randomX = Math.floor(Math.random() * 550)
+        let xValue = 550
         let randomY= Math.floor(Math.random() * 250)
-        const crab = new GamePiece(550, randomY, 60, 60, './images/Crab.png')
+        const crab = new GamePiece(xValue, randomY, 60, 60, './images/Crab.png')
+        
+    }
     } if (gameFrame % 180 === 0) {
         const shell = new GamePiece(530, 130, 50, 50, './images/Shell.jpg')
     }
-}
+
 
 // setInterval(timer, 1000)
 
