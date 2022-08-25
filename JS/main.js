@@ -29,9 +29,9 @@ render () {
 const hermie = new GamePiece(10, 10, 50, 50, "pink")
 const crab = new GamePiece(500, 250, 80, 80, "red")
 const sandcastle = new GamePiece(this.x, this.y, 60, 60, 'brown')
+const shell = new GamePiece(this.x, this.y, 100, 100, 'blue')
 
 function movePlayer (e) {
-    console.log(e)
     const speed = 15
     if (hermie.alive) {
         switch(e.key) {
@@ -60,43 +60,93 @@ function movePlayer (e) {
             }
         }
     }
-    console.log(hermie)
+    hermie.render()
 }
 
 document.addEventListener('keydown', movePlayer)
 
+// creating crabs
 
-// making a clock timer
-function timer () {
-    if (gameFrame < 500) {
-        gameFrame ++
-        document.getElementById("timer").innerText = gameFrame
-    
-        if (document.getElementById("timer").innerText % 5 === 0) {
-            let xValue = 550
-            let randomY= Math.floor(Math.random() * 250)
-            const crab = new GamePiece(xValue, randomY, 60, 60, 'red')
-            crab.render()
-        }
-        if (document.getElementById("timer").innerText % 7 === 0) {
-            let xValue = 550
-            let randomY= Math.floor(Math.random() * 250)
-            const sandcastle = new GamePiece(xValue, randomY, 60, 60, 'brown')
-            sandcastle.render()
-        }
-    } 
+const crabArray = []
+class Crab {
+    constructor() {
+        this.y = Math.random() * canvas.height;
+        this.x = canvas.width - 100;
+        this.radius = 20
+        this.speed = Math.random() * 3 + 1;
+        this.distance
+    }
+    update () {
+        this.x -= this.speed
+    }
+    draw () {
+        ctx.fillStyle = 'red'
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke();
+    }
 }
 
-setInterval(timer, 1000)
+function addCrab () {
+    if (gameFrame % 400 === 0) {
+        crabArray.push(new Crab());
+        console.log(crabArray.length)
+    }
+    for (i=0; i < crabArray.length; i++) {
+        crabArray[i].update()
+        crabArray[i].draw()
+    }
+}
 
-// making enemies appear on timed intervals
+// creating SandCastles
+
+const sandArray = []
+class SandCastle {
+    constructor() {
+        this.y = Math.random() * canvas.height;
+        this.x = canvas.width - 100;
+        this.radius = 40
+        this.speed = Math.random() * 1 + 1;
+        this.distance
+    }
+    update () {
+        this.x -= this.speed
+    }
+    draw () {
+        ctx.fillStyle = 'yellow'
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke();
+    }
+}
+
+function addSand () {
+    if (gameFrame % 300 === 0) {
+        sandArray.push(new SandCastle());
+        console.log(sandArray.length)
+    }
+    for (i=0; i < sandArray.length; i++) {
+        sandArray[i].update()
+        sandArray[i].draw()
+    }
+}
+
+// detect hit function
+
 
 function runGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
+    addCrab();
+    addSand();
     if (hermie.alive) {
         hermie.render()
     };
+    gameFrame++;
+    requestAnimationFrame(runGame)
 }
 
 runGame()
