@@ -115,7 +115,7 @@ function addCrab () {
             ctx.font = "30px Arial";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
-            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", 10, 50);
+            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
             GameOver ()
         }
     }
@@ -162,7 +162,7 @@ function addSand () {
             ctx.font = "30px Arial";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
-            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", 10, 50);
+            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
             GameOver ()
         }
     }
@@ -180,6 +180,9 @@ class Shell {
     }
     update () {
         this.x -= this.speed
+        const dx = this.x - hermie.x;
+        const dy = this.y - hermie.y;
+        this.distance = Math.sqrt(dx*dx + dy*dy)
     }
     draw () {
         ctx.fillStyle = 'blue'
@@ -192,7 +195,7 @@ class Shell {
 }
 
 function addShell () {
-    if (gameFrame % 2000 === 0) {
+    if (gameFrame % 500 === 0) {
         shellArray.push(new Shell());
     }
     for (i=0; i < shellArray.length; i++) {
@@ -202,6 +205,11 @@ function addShell () {
 
     for (let i = 0; i < shellArray.length; i++) {
         if (shellArray[i].distance < shellArray[i].radius + 5) {
+            hermie.alive = false
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
             GameOver ()
         }
     }
@@ -222,28 +230,38 @@ let time = 0
 function runTimer () {
     time ++
     document.getElementById('timer').innerText = time
+        // Win Game Function on a timer
+    // if (time === 10){
+    //         GameOver()
+    //         ctx.font = "30px Arial";
+    //         ctx.fillStyle = "black";
+    //         ctx.textAlign = "center";
+    //         ctx.fillText("YOU WON! Congrats on surving the beach!", canvas.width / 2, 50);
+    //     }
     }
+
     
 setInterval(runTimer, 1000)
-
-// detect hit
-
 
 // run game
 function runGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     addCrab()
     addSand()
-    if (time === 10) {
-        console.log("i work")
-    }
+    addShell()
     if (hermie.alive) {
         hermie.render()
     }
     gameFrame++;
+    if (gameFrame >500) {
+        gameOver = false
+        document.getElementById('title').innerText = "Winner!!!"
+    }
     if (gameOver) {
          requestAnimationFrame(runGame);
     }
 }
 
-runGame()
+window.onload = function () {
+    runGame()
+}
