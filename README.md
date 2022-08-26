@@ -35,6 +35,7 @@ ___
 - start with what I know before building out
 - if I get stuck for longer than 45 minutes, ask for help
 - build out once the basics are there
+#### I am excited to go in over the next couple weeks and get my game to run how I liked by building it out slowly one element at a time, instead of trying to do every element all at once.
 ___
 # Credits
  - Franks Laboratory on Youtube. 
