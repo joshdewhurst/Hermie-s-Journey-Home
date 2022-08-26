@@ -1,6 +1,6 @@
 # Hermie-s-Journey-Home
 
-[Hermie's Journey Home] (https://joshdewhurst.github.io/Hermies-Journey-Home/)
+[Hermie's Journey Home](https://joshdewhurst.github.io/Hermies-Journey-Home/)
 
 # Game Discription:
 ### This will be a game centered around a poor hermit crab who has misplaced his shell. Without protection he will die everytime he runs into a rock, sand castle, or enemy. The objective is to survive the journey long enough to find your shell and get back to safety.
