@@ -74,7 +74,7 @@ gameFrame++;
         })
     }
 ```
-## I know it is not the prettiest way, but when I decided to have clear refresh the page, I know that my game would start over. I was struggling with my game play loop running recursively, so havng this idea made me happy that I was able to find a work around. 
+### I know it is not the prettiest way, but when I decided to have clear refresh the page, I know that my game would start over. I was struggling with my game play loop running recursively, so havng this idea made me happy that I was able to find a work around. 
 ___
 # Post Game Reflection
 ### Reflecting on this project, I realized that I am not good at taking things slowly, and starting where I am at and NOT where I want to finish. A huge amount of my time creating this animation loop, I spent trying to render images to move freely without traces, and I could have spent that time building my logic, redesigning my CSS, or working towards some of my stretch goals with what I knew how to do; draw shapes. 
