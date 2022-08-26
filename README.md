@@ -1,5 +1,6 @@
 # Hermie-s-Journey-Home
 
+## Play Yourself 
 [Hermie's Journey Home](https://joshdewhurst.github.io/Hermies-Journey-Home/)
 
 # Game Discription:
