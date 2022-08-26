@@ -5,6 +5,14 @@
 # Game Discription:
 ### This will be a game centered around a poor hermit crab who has misplaced his shell. Without protection he will die everytime he runs into a rock, sand castle, or enemy. The objective is to survive the journey long enough to find your shell and get back to safety.
 ___
+# Game Play Basics
+### This game is very easy to play. There are only four commands.
+- "A" = go left
+- "D" = go right
+- "W" = go up
+- "S" = go down
+### You are trying to avoid obstacles on the beach until you either, lose your life as a defenseless crab, or beach the timer and win!
+___
 ## This game will use HTML, CSS, Javascript, DOM Elements and Canvas. 
 ___
 # MVP Goals:
