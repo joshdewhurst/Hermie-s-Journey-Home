@@ -5,6 +5,8 @@ canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 
 let health = 200
 let gameFrame = 0
+let gameOver = true
+
 
 // Create a Class for game pieces 
 
@@ -75,9 +77,16 @@ class Crab {
         this.radius = 20
         this.speed = Math.random() * 3 + 1;
         this.distance
+        this
     }
     update () {
         this.x -= this.speed
+        // distance between x/y values in hermie/crab
+        const dx = this.x - hermie.x;
+        const dy = this.y - hermie.y;
+        // defining this.distance as the difference between them(Pathagorean Theorum)
+        this.distance = Math.sqrt(dx*dx + dy*dy)
+
     }
     draw () {
         ctx.fillStyle = 'red'
@@ -99,6 +108,17 @@ function addCrab () {
         crabArray[i].update()
         crabArray[i].draw()
     }
+
+    for (let i = 0; i < crabArray.length; i++) {
+        if (crabArray[i].distance < crabArray[i].radius + 5 && hermie.score > 0 && hermie.score <= 200) {
+            hermie.alive = false
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", 10, 50);
+            GameOver ()
+        }
+    }
 }
 
 // creating SandCastles
@@ -114,6 +134,9 @@ class SandCastle {
     }
     update () {
         this.x -= this.speed
+        const dx = this.x - hermie.x;
+        const dy = this.y - hermie.y;
+        this.distance = Math.sqrt(dx*dx + dy*dy)
     }
     draw () {
         ctx.fillStyle = 'yellow'
@@ -132,6 +155,16 @@ function addSand () {
     for (i=0; i < sandArray.length; i++) {
         sandArray[i].update()
         sandArray[i].draw()
+    }
+    for (let i = 0; i < sandArray.length; i++) {
+        if (sandArray[i].distance < sandArray[i].radius + 5) {
+            hermie.alive = false
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText("Hermie Died!!!! Poor baby Hermie...", 10, 50);
+            GameOver ()
+        }
     }
 }
 
@@ -166,9 +199,22 @@ function addShell () {
         shellArray[i].update()
         shellArray[i].draw()
     }
+
+    for (let i = 0; i < shellArray.length; i++) {
+        if (shellArray[i].distance < shellArray[i].radius + 5) {
+            GameOver ()
+        }
+    }
 }
 
-// detect hit function
+// GAME OVER
+
+function GameOver() {
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+        gameOver = false
+}
 
 
 // run clock
@@ -181,34 +227,23 @@ function runTimer () {
 setInterval(runTimer, 1000)
 
 // detect hit
-function detectHit(objectOne, objectTwo) {
-    const left = objectOne.x + objectOne.width >= objectTwo.x
-    const right = objectOne.x <= objectTwo.x + objectTwo.width
-    const top = objectOne.y + objectOne.height >= objectTwo.y
-    const bottom = objectOne.y <= objectTwo.y + objectTwo.height
-    if (left && right && top && bottom) {
-        return true
-    } else {
-        return false
-    }
-}
+
 
 // run game
 function runGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    addCrab();
-    addSand();
-    if (time === 160) {
-        addShell()
+    addCrab()
+    addSand()
+    if (time === 10) {
+        console.log("i work")
     }
     if (hermie.alive) {
         hermie.render()
-    };
-    if (detectHit(hermie, crab)) {
-        console.log("boom")
     }
     gameFrame++;
-    requestAnimationFrame(runGame)
+    if (gameOver) {
+         requestAnimationFrame(runGame);
+    }
 }
 
 runGame()
