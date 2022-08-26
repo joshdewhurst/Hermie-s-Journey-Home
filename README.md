@@ -30,10 +30,16 @@ ___
 - Create drawings myself and have them show up on the screen as art 
 - Create a leaderboard that tracks health level after each level and remembers that value and records it in a leaderboard 
 ___
-# Road Blocks;
+# Road Blocks Before Starting:
 - I make a lot of syntax errors and keeping track of that will be hard for me. 
 - Making my code easy and readable and not conveluted.
 - Creating timed events for each enemy object and when they will appear and move across the screen. 
+___
+# Road Blocks After Finising
+- I need to compress my code and make it more readable and not as repetitive. I could have done the Classes differently.
+- I had an issue with two timer-like functions, one that tracks the game frame and one that changes a running clock in the game. I wish I would have compressed these.
+- I don't know how to make an image redraw so it is only the image and not the blank white background. i.e. outlining the image. This is one of the things I spent a long time trying to do. And when rendering an image, making it not leave traces when prompted to move.
+- The way I had my game play function set up, it was calling itself recursively over and over and over, and I think that caused me to encounter errors when I tried to create a health/score constant that could be deducted
 ___
 # My Process
 ### Going into this game design, I was so focused on making it LOOK a certain way. I wanted my images to move a certain way, function a certain way, and have more complex elements without necessarily having a good foundation of the basics. 
@@ -59,7 +65,11 @@ ___
 - start with what I know before building out
 - if I get stuck for longer than 45 minutes, ask for help
 - build out once the basics are there
-#### I am excited to go in over the next couple weeks and get my game to run how I liked by building it out slowly one element at a time, instead of trying to do every element all at once.
+#### I am excited to go in over the next couple weeks and get my game to run how I liked by building it out slowly one element at a time, instead of trying to do every element all at once. The following are things I will add for sure now that I feel more confident with my basics
+- Making crabs move like crabs.
+- Making an end goal that you have to touch to end the game.
+- Having game pieces be images instead of just shapes.
+- Creating a health meter that will deduct health when touching an enemy, and also having the enemy disappear on contact.
 ___
 # Credits
  - Franks Laboratory on Youtube. 
