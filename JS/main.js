@@ -116,6 +116,13 @@ function addCrab () {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
+            document.getElementById('title').innerText = "You lost, try again!";
+            let btn = document.createElement("button");
+            btn.innerHTML = "Play Again!";
+            document.body.appendChild(btn);
+            btn.addEventListener('click', () => {
+            location.reload()
+            } )
             GameOver ()
         }
     }
@@ -163,6 +170,13 @@ function addSand () {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
+            document.getElementById('title').innerText = "You lost, try again!";
+            let btn = document.createElement("button");
+            btn.innerHTML = "Play Again!";
+            document.body.appendChild(btn);
+            btn.addEventListener('click', () => {
+            location.reload()
+            } )
             GameOver ()
         }
     }
@@ -210,6 +224,13 @@ function addShell () {
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText("Hermie Died!!!! Poor baby Hermie...", canvas.width / 2, 50);
+            document.getElementById('title').innerText = "You lost, try again!";
+            let btn = document.createElement("button");
+            btn.innerHTML = "Play Again!";
+            document.body.appendChild(btn);
+            btn.addEventListener('click', () => {
+            location.reload()
+            } )
             GameOver ()
         }
     }
@@ -230,18 +251,11 @@ let time = 0
 function runTimer () {
     time ++
     document.getElementById('timer').innerText = time
-        // Win Game Function on a timer
-    // if (time === 10){
-    //         GameOver()
-    //         ctx.font = "30px Arial";
-    //         ctx.fillStyle = "black";
-    //         ctx.textAlign = "center";
-    //         ctx.fillText("YOU WON! Congrats on surving the beach!", canvas.width / 2, 50);
-    //     }
     }
 
-    
-setInterval(runTimer, 1000)
+function removeStartButton () {
+    let startbttn = document.
+}
 
 // run game
 function runGame() {
@@ -252,16 +266,33 @@ function runGame() {
     if (hermie.alive) {
         hermie.render()
     }
+
+    
+
     gameFrame++;
-    if (gameFrame >500) {
+    if (gameFrame >5500) {
         gameOver = false
         document.getElementById('title').innerText = "Winner!!!"
+        // making a replay button
+        let btn = document.createElement("button");
+        btn.innerHTML = "Play Again!";
+        document.body.appendChild(btn);
+        btn.addEventListener('click', () => {
+            location.reload()
+        })
     }
     if (gameOver) {
          requestAnimationFrame(runGame);
     }
 }
 
+// Creating a start button
 window.onload = function () {
-    runGame()
+    let btn = document.createElement("button");
+    btn.innerHTML = "Start!";
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => {
+        runGame()
+        setInterval(runTimer, 1000)
+    })
 }
