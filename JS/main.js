@@ -264,9 +264,6 @@ function runGame() {
     if (hermie.alive) {
         hermie.render()
     }
-
-    
-
     gameFrame++;
     if (gameFrame >5500) {
         gameOver = false
