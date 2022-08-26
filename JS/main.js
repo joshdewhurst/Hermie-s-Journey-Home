@@ -253,9 +253,7 @@ function runTimer () {
     document.getElementById('timer').innerText = time
     }
 
-function removeStartButton () {
-    let startbttn = document.
-}
+
 
 // run game
 function runGame() {
